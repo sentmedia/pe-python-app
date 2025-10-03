@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pe-python-app
+  labels:
+    app: pe-python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pe-python-app
+  template:
+    metadata:
+      labels:
+        app: pe-python-app
+    spec:
+      containers:
+      - name: pe-python-app
+        image: sterlingperry/pe-python-app:v1.2
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
